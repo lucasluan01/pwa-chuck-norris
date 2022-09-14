@@ -22,56 +22,66 @@
         <img class="logo" src="./assets/chucknorris_logo.png" alt="Chuck Norris Logo">
     </header>
 
-    <div class="tabs">
-        <div class="tab--active">
-            Gerar piada
-        </div>
-        <div class="tab">
-            Favoritas
-        </div>
-    </div>
-
-    <div class="generate-joke">
-        <div class="container__search">
-            <input class="input" id="search-joke" type="text" placeholder="Pesquisa de texto livre">
-            <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M11.7321 10.0391H10.9907L10.7279 9.79265C11.8541 8.51503 12.436 6.77198 12.1169 4.91943C11.6758 2.38243 9.4984 0.356481 6.87055 0.0462004C2.90061 -0.428346 -0.440517 2.82047 0.0475131 6.68072C0.36661 9.23597 2.45012 11.3532 5.05921 11.7821C6.9644 12.0924 8.75697 11.5266 10.0709 10.4315L10.3243 10.687V11.4079L14.313 15.2864C14.6978 15.6606 15.3266 15.6606 15.7114 15.2864C16.0962 14.9123 16.0962 14.3008 15.7114 13.9267L11.7321 10.0391ZM6.10096 10.0391C3.76405 10.0391 1.87763 8.20475 1.87763 5.9324C1.87763 3.66005 3.76405 1.82575 6.10096 1.82575C8.43788 1.82575 10.3243 3.66005 10.3243 5.9324C10.3243 8.20475 8.43788 10.0391 6.10096 10.0391Z" />
-            </svg>
+    <main class="main-content">
+        <div class="tabs">
+            <div class="tab--active">
+                Gerar piada
+            </div>
+            <div class="tab">
+                Favoritas
+            </div>
         </div>
 
-        <div class="result-search" id="result-search"></div>
-
-        <div class="no-research">
-            <div class="filter">
-                <p class="title">Filtrar por categoria:</p>
-                <div class="container__chip" id="container__chip"></div>
+        <div class="generate-joke">
+            <div class="container__search">
+                <input class="input" id="search-joke" type="text" placeholder="Pesquisa de texto livre">
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.7321 10.0391H10.9907L10.7279 9.79265C11.8541 8.51503 12.436 6.77198 12.1169 4.91943C11.6758 2.38243 9.4984 0.356481 6.87055 0.0462004C2.90061 -0.428346 -0.440517 2.82047 0.0475131 6.68072C0.36661 9.23597 2.45012 11.3532 5.05921 11.7821C6.9644 12.0924 8.75697 11.5266 10.0709 10.4315L10.3243 10.687V11.4079L14.313 15.2864C14.6978 15.6606 15.3266 15.6606 15.7114 15.2864C16.0962 14.9123 16.0962 14.3008 15.7114 13.9267L11.7321 10.0391ZM6.10096 10.0391C3.76405 10.0391 1.87763 8.20475 1.87763 5.9324C1.87763 3.66005 3.76405 1.82575 6.10096 1.82575C8.43788 1.82575 10.3243 3.66005 10.3243 5.9324C10.3243 8.20475 8.43788 10.0391 6.10096 10.0391Z" />
+                </svg>
             </div>
 
-            <button class="button-primary" id="generate-joke">Gerar piada</button>
+            <div class="result-search" id="result-search"></div>
 
-            <div class="container__joke">
-                <div class="top">
-                    <p id="category"></p>
-                    <div class="container__favorite">
-                        <!-- <input type="checkbox" name="favorite" id="favorite" value="true">
-                        <label for="favorite"> -->
-                            <svg class="favorite-icon" id="favorite-icon" width="25" height="22" viewBox="0 0 25 22" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.1865 21.3564C13.2369 22.2166 11.7749 22.2166 10.8253 21.3439L10.6879 21.2193C4.12788 15.2975 -0.157975 11.4204 0.0044621 6.58327C0.0794333 4.46392 1.16652 2.43184 2.92834 1.23503C6.22707 -1.00899 10.3005 0.0382159 12.4997 2.60637C14.6988 0.0382159 18.7722 -1.02146 22.071 1.23503C23.8328 2.43184 24.9199 4.46392 24.9949 6.58327C25.1698 11.4204 20.8714 15.2975 14.3115 21.2442L14.1865 21.3564Z" />
-                            </svg>
-                        <!-- </label> -->
+            <div class="no-research">
+                <div class="filter">
+                    <p class="title">Filtrar por categoria:</p>
+                    <div class="container__chip" id="container__chip"></div>
+                </div>
+                
+                <div class="center">
+                    <button class="button-primary" id="generate-joke">Gerar piada</button>
+                </div>
+
+
+
+                <!-- <input type="checkbox" name="teste" id="teste" value="teste" data-id="lucas" onclick="testando(this)"> -->
+
+                <div class="container__joke">
+                    <div class="top">
+                        <p id="category"></p>
+                        <div class="container__favorite">
+                            <input class="favorite" type="checkbox" name="favorite" id="check-favorite"
+                                onclick="checkFavorite(this)">
+                            <label for="check-favorite">
+                                <svg class="favorite-icon" id="favorite-icon" width="25" height="22" viewBox="0 0 25 22"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.1865 21.3564C13.2369 22.2166 11.7749 22.2166 10.8253 21.3439L10.6879 21.2193C4.12788 15.2975 -0.157975 11.4204 0.0044621 6.58327C0.0794333 4.46392 1.16652 2.43184 2.92834 1.23503C6.22707 -1.00899 10.3005 0.0382159 12.4997 2.60637C14.6988 0.0382159 18.7722 -1.02146 22.071 1.23503C23.8328 2.43184 24.9199 4.46392 24.9949 6.58327C25.1698 11.4204 20.8714 15.2975 14.3115 21.2442L14.1865 21.3564Z" />
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="empty">Clique no botão acima para gerar uma piada</p>
+                    <p class="joke" id="joke"></p>
+                    <div class="bottom">
+                        <p class="created-at" id="created-at"></p>
                     </div>
                 </div>
-                <p class="empty">Clique no botão acima para gerar uma piada</p>
-                <p class="joke" id="joke"></p>
-                <div class="bottom">
-                    <p class="created-at" id="created-at"></p>
-                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src="./index.js"></script>
 </body>

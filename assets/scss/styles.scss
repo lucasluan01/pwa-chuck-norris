@@ -14,7 +14,7 @@ $spacing-4: 2rem;
 html,
 body {
     min-height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
 }
 
 body {
@@ -40,6 +40,11 @@ input:is([type="radio"], [type="checkbox"]) {
     font-size: 1rem;
     margin-bottom: $spacing-2;
     font-weight: 400;
+}
+
+.main-content {
+    max-width: 768px;
+    margin: 0 auto;
 }
 
 .header {
@@ -99,12 +104,12 @@ input:is([type="radio"], [type="checkbox"]) {
 }
 
 .result-search {
-    display: flex;
-    flex-wrap: wrap;
     gap: $spacing-2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.result-search:not(:empty) + .no-research {
+.result-search:not(:empty)+.no-research {
     display: none;
 }
 
@@ -134,20 +139,21 @@ input:is([type="radio"], [type="checkbox"]) {
     }
 }
 
-@mixin button {
+.center {
+    text-align: center;
+}
+
+.button-primary {
+    background-color: $color-primary;
+    color: #fff;
+    margin: 0 auto $spacing-4;
+    width: 100%;
+    max-width: 280px;
+
     padding: 10px 16px;
     border-radius: 50px;
     font-size: 0.875rem;
     cursor: pointer;
-}
-
-.button-primary {
-    @include button;
-    background-color: $color-primary;
-    color: #fff;
-    margin-bottom: $spacing-4;
-    width: 100%;
-    max-width: 280px;
 }
 
 
@@ -158,7 +164,7 @@ input:is([type="radio"], [type="checkbox"]) {
     padding: $spacing-2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: $spacing-2;
 
     .empty {
@@ -182,10 +188,10 @@ input:is([type="radio"], [type="checkbox"]) {
     .container__favorite {
         .favorite-icon {
             fill: #fff;
+        }
 
-            &.active {
-                fill: #0272BD;
-            }
+        &:has(.favorite:checked) .favorite-icon {
+            fill: #0272BD;
         }
     }
 
