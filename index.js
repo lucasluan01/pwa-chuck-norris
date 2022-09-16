@@ -17,6 +17,17 @@ function getRandomJoke() {
     });
 }
 
+async function getJokeById(id) {
+  let response = await fetch(`${urlBase}/${id}`);
+  let data = await response.json();
+
+  // if (!response.ok) {
+  //   throw new Error(`HTTP error! status: ${response.status}`);
+  // }
+
+  return data;
+}
+
 function getJokeByCategory(category) {
   fetch(`${urlBase}/random?category=${category}`)
     .then((response) => response.json())
@@ -68,7 +79,9 @@ function createCardJoke(item) {
     <div class="top">
         <p id="category">${item.categories[0] ?? "Uninformed"}</p>
         <div class="container__favorite">
-          <input class="favorite" type="checkbox" name="favorite" id="joke-${item.id}" value="${item.id}" onclick="checkFavorite(this)">
+          <input class="favorite" type="checkbox" name="favorite" id="joke-${
+            item.id
+          }" value="${item.id}" onclick="checkFavorite(this)">
           <label for="joke-${item.id}">
               <svg class="favorite-icon" id="favorite-icon" width="25" height="22" viewBox="0 0 25 22" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -80,24 +93,38 @@ function createCardJoke(item) {
     </div>
     <p class="joke" id="joke">${item.value}</p>
     <div class="bottom">
-        <p class="created-at" id="created-at">Data criação: ${item.created_at}</p>
+        <p class="created-at" id="created-at">Data criação: ${
+          item.created_at
+        }</p>
     </div>
   </div>
   `;
 }
 
 function checkFavorite(element) {
+  const favorites = getLocalStorage();
+
   if (element.checked) {
-    // TODO: Salvar no localStorage
-    console.log("Adicionado aos favoritos", element.value);
+    newJoke = getJokeById(element.value).then((data) => {
+      favorites.unshift(data);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    });
   } else {
-    // TODO: Remover do localStorage
-    console.log("Removido dos favoritos", element.value);
+    favorites.forEach((item, index) => {
+      if (item.id === element.value) {
+        favorites.splice(index, 1);
+      }
+    });
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   }
 }
 
+function getLocalStorage() {
+  return JSON.parse(localStorage.getItem("favorites")) ?? [];
+}
+
 window.onload = function () {
-  console.log(createFilter());
+  createFilter();
 };
 
 document.getElementById("generate-joke").addEventListener("click", () => {
@@ -116,3 +143,12 @@ document.getElementById("search-joke").addEventListener("keyup", () => {
     document.getElementById("result-search").innerHTML = "";
   }
 });
+
+function loadFavoritesList() {
+  const favorites = getLocalStorage();
+  const containerFavorites = document.getElementById("list-favorites");
+
+  favorites.forEach((item) => {
+    containerFavorites.innerHTML += createCardJoke(item);
+  });
+}

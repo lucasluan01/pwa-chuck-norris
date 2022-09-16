@@ -24,12 +24,10 @@
 
     <main class="main-content">
         <div class="tabs">
-            <div class="tab--active">
-                Gerar piada
-            </div>
-            <div class="tab">
-                Favoritas
-            </div>
+            <input class="tab-generate-joke" type="radio" name="tab" id="tab-generate-joke" checked>
+            <label class="tab" for="tab-generate-joke">Gerar piada</label>
+            <input class="tab-favorite-jokes" type="radio" name="tab" id="tab-favorite-jokes" onclick="loadFavoritesList()">
+            <label class="tab" for="tab-favorite-jokes">Favoritas</label>
         </div>
 
         <div class="generate-joke">
@@ -54,10 +52,6 @@
                     <button class="button-primary" id="generate-joke">Gerar piada</button>
                 </div>
 
-
-
-                <!-- <input type="checkbox" name="teste" id="teste" value="teste" data-id="lucas" onclick="testando(this)"> -->
-
                 <div class="container__joke">
                     <div class="top">
                         <p id="category"></p>
@@ -73,12 +67,21 @@
                             </label>
                         </div>
                     </div>
-                    <p class="empty">Clique no botão acima para gerar uma piada</p>
+                    <p class="empty-joke">Clique no botão acima para gerar uma piada</p>
                     <p class="joke" id="joke"></p>
                     <div class="bottom">
                         <p class="created-at" id="created-at"></p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="favorite-jokes">
+            <div id="list-favorites" class="list-favorites"></div>
+
+            <div class="empty-favorites">
+                <img class="empty-favorites__img" src="./assets/chuck-norris-fundo.png">
+                <p>Você ainda não possui nenhuma piada favorita.</p>
             </div>
         </div>
     </main>

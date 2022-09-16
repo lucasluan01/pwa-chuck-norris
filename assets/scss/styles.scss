@@ -64,14 +64,23 @@ input:is([type="radio"], [type="checkbox"]) {
     margin-bottom: $spacing-4;
 
     .tab {
+        cursor: pointer;
         padding: 0 16px;
         font-family: 'Bungee', cursive;
         border-bottom: 5px solid $color-neutral-200;
+    }
 
-        &--active {
-            @extend .tab;
-            border-bottom: 5px solid $color-primary;
-        }
+    :is(.tab-generate-joke:checked, .tab-favorite-jokes:checked)+.tab {
+        @extend .tab;
+        border-bottom: 5px solid $color-primary;
+    }
+
+    &:has(.tab-generate-joke:checked)~.generate-joke {
+        display: block;
+    }
+
+    &:has(.tab-favorite-jokes:checked)~.favorite-jokes {
+        display: block;
     }
 }
 
@@ -106,7 +115,7 @@ input:is([type="radio"], [type="checkbox"]) {
 .result-search {
     gap: $spacing-2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .result-search:not(:empty)+.no-research {
@@ -132,9 +141,10 @@ input:is([type="radio"], [type="checkbox"]) {
             padding: 8px 16px;
             background-color: $color-neutral-200;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             text-transform: capitalize;
             text-align: center;
+            cursor: pointer;
         }
     }
 }
@@ -164,10 +174,10 @@ input:is([type="radio"], [type="checkbox"]) {
     padding: $spacing-2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     gap: $spacing-2;
 
-    .empty {
+    .empty-joke {
         text-align: center;
         vertical-align: middle;
         font-size: .75rem;
@@ -188,10 +198,11 @@ input:is([type="radio"], [type="checkbox"]) {
     .container__favorite {
         .favorite-icon {
             fill: #fff;
+            cursor: pointer;
         }
 
         &:has(.favorite:checked) .favorite-icon {
-            fill: #0272BD;
+            fill: #29495f;
         }
     }
 
@@ -206,8 +217,39 @@ input:is([type="radio"], [type="checkbox"]) {
             display: none;
         }
 
-        .empty {
+        .empty-joke {
             display: block;
         }
+    }
+}
+
+.generate-joke,
+.favorite-jokes {
+    display: none;
+}
+
+.favorite-jokes {
+    .empty-favorites {
+        display: none;
+        height: auto;
+
+        &__img {
+            width: 100%;
+            max-width: 400px;
+            object-fit: contain;
+        }
+
+        color: #000;
+        text-align: center;
+    }
+
+    .list-favorites {
+        gap: $spacing-2;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .list-favorites:empty~.empty-favorites {
+        display: block;
     }
 }
