@@ -1,6 +1,6 @@
 # pwa-chuck-norris
 
-# FALTA GRAVAR GIF
+## 🚧 FALTA GRAVAR GIF 🚧
 ![Apresentação]()
 
 ### [Acessar a demonstração](https://pwa-chuck-norris.lucasluan01.repl.co)
@@ -23,8 +23,8 @@ Piadas: uma piada possui os seguintes dados: categoria, data de criação, id e 
 - A aplicação tem pelo menos duas interfaces (telas ou páginas) independentes? **Sim**
 - A aplicação armazena e usa de forma relevante dados complexos (mais de um atributo)? **Sim**
 - A aplicação possui um manifesto para instalação no dispositivo do usuário? **Sim**
-- A aplicação possui um service worker que permite o funcionamento off-line? **Não** 
-- O código da minha aplicação possui comentários explicando cada operação? **Não**
+- A aplicação possui um service worker que permite o funcionamento off-line? **🚧 FALTA FAZER 🚧**
+- O código da minha aplicação possui comentários explicando cada operação? **🚧 FALTA FAZER 🚧**
 - A aplicação está funcionando corretamente? **Sim**
 - A aplicação está completa? **Sim**
 
