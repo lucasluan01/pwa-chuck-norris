@@ -1,6 +1,5 @@
 const urlBase = "https://api.chucknorris.io/jokes";
 
-const favoriteIconElement = document.getElementById("favorite-icon");
 const checkFavoriteElement = document.getElementById("check-favorite");
 const categoryElement = document.getElementById("category");
 const jokeElement = document.getElementById("joke");
@@ -73,7 +72,7 @@ function createFilter() {
     });
 }
 
-function createCardJoke(item) {
+function createCardJoke(item, isFavorite = false) {
   return `
   <div class="container__joke">
     <div class="top">
@@ -81,7 +80,9 @@ function createCardJoke(item) {
         <div class="container__favorite">
           <input class="favorite" type="checkbox" name="favorite" id="joke-${
             item.id
-          }" value="${item.id}" onclick="checkFavorite(this)">
+          }" value="${item.id}" ${
+    isFavorite ? "checked" : ""
+  } onclick="checkFavorite(this)">
           <label for="joke-${item.id}">
               <svg class="favorite-icon" id="favorite-icon" width="25" height="22" viewBox="0 0 25 22" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +149,19 @@ function loadFavoritesList() {
   const favorites = getLocalStorage();
   const containerFavorites = document.getElementById("list-favorites");
 
+  containerFavorites.innerHTML = "";
+
   favorites.forEach((item) => {
-    containerFavorites.innerHTML += createCardJoke(item);
+    containerFavorites.innerHTML += createCardJoke(item, true);
   });
+}
+
+function loadGenerateJoke() {
+  document.getElementById("result-search").innerHTML = "";
+  document.getElementById("search-joke").value = "";
+  categoryElement.innerHTML = "";
+  jokeElement.innerHTML = "";
+  createdAt.innerHTML = "";
+  document.getElementById("check-favorite").checked = false;
+  checkFavoriteElement.value = "";
 }
