@@ -1,13 +1,12 @@
-# pwa-chuck-norris
+# PWA Chuck Norris
 
-## 🚧 FALTA GRAVAR GIF 🚧
-![Apresentação]()
+![Apresentação](https://user-images.githubusercontent.com/85650316/191863317-1eb430b0-99fe-4b99-a953-5120e54fd1a9.gif)
 
 ### [Acessar a demonstração](https://pwa-chuck-norris.lucasluan01.repl.co)
 
 ## 💻 Sobre o projeto
 
-Site responsivo, construído a partir da [API Chuck Norris Jokes](https://api.chucknorris.io/) que contém afirmações hiperbólicas absurdas sobre a dureza, atitude, virilidade, sofisticação e masculinidade de Norris.
+Aplicativo Web Progressivo construído a partir da [API Chuck Norris Jokes](https://api.chucknorris.io/) que contém afirmações hiperbólicas absurdas sobre a dureza, atitude, virilidade, sofisticação e masculinidade de Norris.
 
 ### Telas/Dados
 
@@ -24,7 +23,7 @@ Piadas: uma piada possui os seguintes dados: categoria, data de criação, id e 
 - A aplicação armazena e usa de forma relevante dados complexos (mais de um atributo)? **Sim**
 - A aplicação possui um manifesto para instalação no dispositivo do usuário? **Sim**
 - A aplicação possui um service worker que permite o funcionamento off-line? **🚧 FALTA FAZER 🚧**
-- O código da minha aplicação possui comentários explicando cada operação? **🚧 FALTA FAZER 🚧**
+- O código da minha aplicação possui comentários explicando cada operação? **Sim**
 - A aplicação está funcionando corretamente? **Sim**
 - A aplicação está completa? **Sim**
 
