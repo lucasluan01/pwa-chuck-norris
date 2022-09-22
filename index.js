@@ -138,6 +138,7 @@ window.onload = function () {
 };
 
 document.getElementById("generate-joke").addEventListener("click", () => {
+  document.getElementById("check-favorite").checked = false;
   const category = document.querySelector(
     'input[name="switch-categories"]:checked'
   )?.value;
