@@ -7,6 +7,7 @@ const createdAt = document.getElementById("created-at");
 
 // busca e exibe a piada aleatória
 function getRandomJoke() {
+  document.getElementById("check-favorite").checked = false;
   fetch(`${urlBase}/random`)
     .then((response) => response.json())
     .then((data) => {
