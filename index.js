@@ -5,6 +5,7 @@ const categoryElement = document.getElementById("category");
 const jokeElement = document.getElementById("joke");
 const createdAt = document.getElementById("created-at");
 
+// busca e exibe a piada aleatória
 function getRandomJoke() {
   fetch(`${urlBase}/random`)
     .then((response) => response.json())
@@ -16,6 +17,7 @@ function getRandomJoke() {
     });
 }
 
+// busca a piada pelo id
 async function getJokeById(id) {
   let response = await fetch(`${urlBase}/${id}`);
   let data = await response.json();
@@ -27,6 +29,7 @@ async function getJokeById(id) {
   return data;
 }
 
+// busca e exibe a piada de acordo com a categoria selecionada
 function getJokeByCategory(category) {
   fetch(`${urlBase}/random?category=${category}`)
     .then((response) => response.json())
@@ -38,6 +41,7 @@ function getJokeByCategory(category) {
     });
 }
 
+// busca e exibe a piada de acordo com a pesquisa realizada
 function getJokeBySearch(search) {
   const containerSearch = document.getElementById("result-search");
 
@@ -52,6 +56,7 @@ function getJokeBySearch(search) {
     });
 }
 
+// busca e cria o filtro de categorias
 function createFilter() {
   let contentHTML = "";
   const containerChip = document.getElementById("container__chip");
@@ -72,6 +77,7 @@ function createFilter() {
     });
 }
 
+// componente para o cartão da lista de piadas
 function createCardJoke(item, isFavorite = false) {
   return `
   <div class="container__joke">
@@ -102,6 +108,7 @@ function createCardJoke(item, isFavorite = false) {
   `;
 }
 
+// adiciona ou remove a piada dos favoritos
 function checkFavorite(element) {
   const favorites = getLocalStorage();
 
@@ -120,6 +127,7 @@ function checkFavorite(element) {
   }
 }
 
+// busca os favoritos no localStorage
 function getLocalStorage() {
   return JSON.parse(localStorage.getItem("favorites")) ?? [];
 }
@@ -145,6 +153,7 @@ document.getElementById("search-joke").addEventListener("keyup", () => {
   }
 });
 
+// exibe as piadas favoritas
 function loadFavoritesList() {
   const favorites = getLocalStorage();
   const containerFavorites = document.getElementById("list-favorites");
@@ -156,6 +165,7 @@ function loadFavoritesList() {
   });
 }
 
+// zera os valores ao voltar pra aba 'Gerar piadas'
 function loadGenerateJoke() {
   document.getElementById("result-search").innerHTML = "";
   document.getElementById("search-joke").value = "";
